@@ -1,0 +1,21 @@
+{"time":"2026-02-26T20:12:51.6120247+05:30","level":"INFO","msg":"main: starting server","port-filename":"C:\\Users\\HP\\AppData\\Local\\Temp\\tmpsoj1gkn1\\port-15984.txt","pid":15984,"log-level":0,"disable-analytics":false,"shutdown-on-parent-exit":false,"enable-dcgm-profiling":false}
+{"time":"2026-02-26T20:12:51.6170216+05:30","level":"INFO","msg":"server: accepting connections","addr":{"IP":"127.0.0.1","Port":58374,"Zone":""}}
+{"time":"2026-02-26T20:12:51.6170216+05:30","level":"INFO","msg":"server: will exit if parent process dies","ppid":15984}
+{"time":"2026-02-26T20:12:51.630611+05:30","level":"INFO","msg":"server: accepting connections","addr":{"Name":"C:\\Users\\HP\\AppData\\Local\\Temp\\wandb-15984-26684-3514395026\\socket","Net":"unix"}}
+{"time":"2026-02-26T20:12:53.841729+05:30","level":"INFO","msg":"connection: ManageConnectionData: new connection created","id":"1(127.0.0.1:58377)"}
+{"time":"2026-02-26T20:12:54.2272615+05:30","level":"INFO","msg":"handleInformInit: received","streamId":"asnxiybr","id":"1(127.0.0.1:58377)"}
+{"time":"2026-02-26T20:12:55.0771545+05:30","level":"INFO","msg":"handleInformInit: stream started","streamId":"asnxiybr","id":"1(127.0.0.1:58377)"}
+{"time":"2026-02-26T20:13:01.5797845+05:30","level":"INFO","msg":"connection: cancelling request","id":"1(127.0.0.1:58377)","requestId":"t9x1tczxyc6y"}
+{"time":"2026-02-26T21:47:06.4286006+05:30","level":"INFO","msg":"connection: cancelling request","id":"1(127.0.0.1:58377)","requestId":"t9x1tczxyc6y"}
+{"time":"2026-02-26T21:47:09.8790861+05:30","level":"INFO","msg":"connection: cancelling request","id":"1(127.0.0.1:58377)","requestId":"t9x1tczxyc6y"}
+{"time":"2026-02-26T21:47:09.8829743+05:30","level":"INFO","msg":"handleInformFinish: finish message received","streamId":"asnxiybr","id":"1(127.0.0.1:58377)"}
+{"time":"2026-02-26T21:47:09.88685+05:30","level":"INFO","msg":"handleInformFinish: stream closed","streamId":"asnxiybr","id":"1(127.0.0.1:58377)"}
+{"time":"2026-02-26T21:47:09.9358297+05:30","level":"INFO","msg":"handleInformTeardown: server teardown initiated","id":"1(127.0.0.1:58377)"}
+{"time":"2026-02-26T21:47:09.9358297+05:30","level":"INFO","msg":"handleInformTeardown: server shutdown complete","id":"1(127.0.0.1:58377)"}
+{"time":"2026-02-26T21:47:09.9358297+05:30","level":"INFO","msg":"server is shutting down"}
+{"time":"2026-02-26T21:47:09.9358297+05:30","level":"INFO","msg":"connection: closing","id":"1(127.0.0.1:58377)"}
+{"time":"2026-02-26T21:47:09.9363356+05:30","level":"INFO","msg":"connection: closed successfully","id":"1(127.0.0.1:58377)"}
+{"time":"2026-02-26T21:47:09.9363356+05:30","level":"INFO","msg":"connection: ManageConnectionData: connection closed","id":"1(127.0.0.1:58377)"}
+{"time":"2026-02-26T21:47:09.9368794+05:30","level":"INFO","msg":"server: listener closed","addr":{"Name":"C:\\Users\\HP\\AppData\\Local\\Temp\\wandb-15984-26684-3514395026\\socket","Net":"unix"}}
+{"time":"2026-02-26T21:47:09.937416+05:30","level":"INFO","msg":"server: listener closed","addr":{"IP":"127.0.0.1","Port":58374,"Zone":""}}
+{"time":"2026-02-26T21:47:09.937416+05:30","level":"INFO","msg":"server is closed"}
