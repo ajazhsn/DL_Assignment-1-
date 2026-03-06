@@ -32,44 +32,45 @@ def parse_arguments():
 parse_args = parse_arguments
 
 
-def _load_model(model, model_path):
-    """Load weights - tries JSON, then model_weights.py, then npy."""
-    # 1. Try JSON (text format, never corrupted)
-    json_path = model_path.replace('.npy', '.json')
-    for jp in [json_path,
-               os.path.join(_THIS_DIR, 'best_model.json'),
-               os.path.join(_ROOT_DIR, 'models', 'best_model.json')]:
-        if os.path.exists(jp):
-            try:
-                import json as _json
-                d = _json.load(open(jp))
-                w = {k: np.array(v) for k, v in d.items()}
-                if (w['W0'][0] != w['W0'][1]).any():  # not all identical
-                    model.set_weights(w)
-                    print(f"Loaded from {jp}")
-                    return True
-            except Exception:
-                pass
-
-    # 2. Try model_weights.py (embedded base64)
+def _load_weights(model):
+    """Try every possible source for weights, in order of reliability."""
+    # 1. model_weights.py (embedded base64 - 100% reliable)
     for mwp in [os.path.join(_THIS_DIR, 'model_weights.py'),
                 os.path.join(_ROOT_DIR, 'src', 'model_weights.py')]:
         if os.path.exists(mwp):
             try:
                 import importlib.util
-                spec = importlib.util.spec_from_file_location(
-                    'model_weights', mwp)
+                spec = importlib.util.spec_from_file_location('mw', mwp)
                 mw = importlib.util.module_from_spec(spec)
                 spec.loader.exec_module(mw)
                 model.set_weights(mw.get_weights())
-                print(f"Loaded from {mwp}")
-                return True
+                print(f"Weights loaded from {mwp}")
+                return
             except Exception as e:
-                print(f"model_weights.py failed: {e}")
+                print(f"model_weights.py error: {e}")
 
-    # 3. Fallback to npy
-    model.load(model_path)
-    return True
+    # 2. JSON files
+    for jp in [os.path.join(_THIS_DIR, 'best_model.json'),
+               os.path.join(_ROOT_DIR, 'models', 'best_model.json'),
+               os.path.join(_ROOT_DIR, 'src', 'best_model.json')]:
+        if os.path.exists(jp):
+            try:
+                d = json.load(open(jp))
+                model.set_weights({k: np.array(v) for k, v in d.items()})
+                print(f"Weights loaded from {jp}")
+                return
+            except Exception as e:
+                print(f"JSON error {jp}: {e}")
+
+    # 3. NPY fallback
+    for np_path in [os.path.join(_THIS_DIR, 'best_model.npy'),
+                    os.path.join(_ROOT_DIR, 'models', 'best_model.npy')]:
+        if os.path.exists(np_path):
+            try:
+                model.load(np_path)
+                return
+            except Exception as e:
+                print(f"NPY error: {e}")
 
 
 def main():
@@ -81,10 +82,14 @@ def main():
         c = os.path.join(_ROOT_DIR, path)
         return c if os.path.exists(c) else path
 
+    # Load config - try multiple locations
     config_path = _resolve(args.config)
-    # Try src/best_config.json if models one missing
-    if not os.path.exists(config_path):
-        config_path = os.path.join(_THIS_DIR, 'best_config.json')
+    for cp in [config_path,
+               os.path.join(_THIS_DIR, 'best_config.json'),
+               os.path.join(_ROOT_DIR, 'models', 'best_config.json')]:
+        if os.path.exists(cp):
+            config_path = cp
+            break
     with open(config_path) as f:
         cfg = json.load(f)
 
@@ -105,8 +110,7 @@ def main():
                           weight_init=cfg.get('weight_init', 'xavier'),
                           loss=cfg.get('loss', 'cross_entropy'))
 
-    model_path = _resolve(args.model)
-    _load_model(model, model_path)
+    _load_weights(model)
 
     y_pred = model.predict(x_test).astype(int)
 
