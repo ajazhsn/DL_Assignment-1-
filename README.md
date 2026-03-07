@@ -122,6 +122,8 @@ Best config: **Adam optimizer, ReLU activation, 2 hidden layers × 128 neurons, 
 
 [Link to public W&B report](https://wandb.ai/da25m006-iitmaana/da6401-assignment1/reports/Introduction-to-Deep-Learning---VmlldzoxNjA1MTA2Mg?accessToken=yn2exrc0imj5z5xuw33kuephb8aiyn5m0fwk9gvagbbas30rgbkpwqjk7vla3io9)
 
+[Link to github repository](https://github.com/ajazhsn/DL_Assignment-1-)
+
 ---
 
 ## Academic Integrity
