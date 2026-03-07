@@ -17,5 +17,5 @@
   "optimizer": "adam",
   "learning_rate": 0.001,
   "weight_decay": 0.0,
-  "best_val_acc": 0.979
+  "best_val_acc": 0.9003333333333333
 }

@@ -14,7 +14,7 @@ for k in list(sys.modules.keys()):
 
 
 print('Loading data...')
-x_train, x_val, x_test, y_train, y_val, y_test = load_data('mnist')
+x_train, x_val, x_test, y_train, y_val, y_test = load_data('fashion_mnist')
 
 model = NeuralNetwork(784, [128, 128, 128], 10, activation='relu',
                       weight_init='xavier', loss='cross_entropy')
