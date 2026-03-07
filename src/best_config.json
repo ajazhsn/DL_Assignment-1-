@@ -1,5 +1,5 @@
 {
-  "dataset": "mnist",
+  "dataset": "fashion_mnist",
   "hidden_sizes": [
     128,
     128,
@@ -16,6 +16,5 @@
   "loss": "cross_entropy",
   "optimizer": "adam",
   "learning_rate": 0.001,
-  "weight_decay": 0.0,
-  "best_val_acc": 0.9003333333333333
+  "weight_decay": 0.0
 }
